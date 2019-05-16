@@ -1,0 +1,12 @@
+<div *ngIf="(user$ | async) as user; else select" class="user-details">
+  <div class="detail">
+    <div routerLink="users/profile/{{user.id}}" class="user-link">
+      <h1>{{ user.name }}</h1>
+    </div>
+    <p>id: {{ user.id }}</p>
+    <p>mail: {{ user.email }}</p>
+    <p>phone: {{ user.phone }}</p>
+  </div>
+</div>
+<ng-template #select></ng-template>
+

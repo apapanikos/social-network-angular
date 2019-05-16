@@ -1,0 +1,9 @@
+.users {
+    display: flex;
+    justify-content: center;
+}
+
+.users h1 {
+    font-size: 1.5rem;
+    text-align: center;
+}
