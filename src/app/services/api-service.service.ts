@@ -13,28 +13,40 @@ const httpOptions = {
 })
 export class ApiServiceService {
 
-  private API_URL: string = 'https://cors-anywhere.herokuapp.com/https://jsonplaceholder.typicode.com/users/'
+  private API_URL: string = 'https://cors-anywhere.herokuapp.com/https://reqres.in/api/users'
 
   userDetailsSubject: Subject<User> = new Subject()
   userDetails$: Observable<User> = this.userDetailsSubject.asObservable()
 
   constructor(private http: HttpClient) { }
 
+  //GET USER LIST
   getUsers (): Observable<User[]>{
     return this.http.get<User[]>(this.API_URL)
       .pipe(
+        map(res => res['data']),
         catchError(this.handleError<User[]>('getUser', []))
       );
   }
 
-    //share user details
-    shareUserDetails(user: User) {
-      this.userDetailsSubject.next(user)
-    }
+  // GET hero by id. Will 404 if id not found 
+  getUser(id: number): Observable<User> {
+    const url = `${this.API_URL}/${id}`
+    return this.http.get<User>(url).pipe(
+      map(res => res['data']),
+      catchError(this.handleError<User>(`getUser id=${id}`))
+    )
+  }
 
-    getUserDetails(): Observable<User>{
-      return this.userDetails$
-    }
+  //SHARE USER DETAIL
+  shareUserDetails(user: User) {
+    this.userDetailsSubject.next(user)
+  }
+
+  //GRAB USER DETAILS
+  getUserDetails(): Observable<User>{
+    return this.userDetails$
+  }
 
   /**
    * Handle Http operation that failed.

@@ -1,3 +1,8 @@
-<p>
-  user-profile works!
-</p>
+<div *ngIf="user$ | async as user" class="user-profile">
+  <div class="detail">
+    <h1>{{ user.first_name }}</h1>
+    <img [src]="user.avatar">
+    <p>mail: {{ user.email }}</p>
+  </div>
+</div>
+
