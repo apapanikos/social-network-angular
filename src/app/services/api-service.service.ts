@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { Observable, of, Subject } from 'rxjs'
-import { catchError, map, tap } from 'rxjs/operators'
+import { catchError, map } from 'rxjs/operators'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { User } from '../user-inteface'
 
@@ -29,7 +29,7 @@ export class ApiServiceService {
       );
   }
 
-  // GET hero by id. Will 404 if id not found 
+  // GET user by id. Will 404 if id not found 
   getUser(id: number): Observable<User> {
     const url = `${this.API_URL}/${id}`
     return this.http.get<User>(url).pipe(
