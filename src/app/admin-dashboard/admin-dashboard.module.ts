@@ -1,28 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { UsersModule } from '../users/users.module';
 
 
 //components
 import { AdminDashboardComponent } from './admin-dashboard.component';
-// import { UsersComponent } from './users.component'
-// import { UserComponent } from './user/user.component'
-// import { UserDetailsComponent } from './user-details/user-details.component'
-
-
 
 //routing
  
 @NgModule({
     imports: [
         RouterModule,
+        // UsersModule
     ],
     declarations: [
-        // UsersComponent,
-        // UserComponent,
-        // UserDetailsComponent
+        AdminDashboardComponent,
+
     ],
     providers: [
     ],
+    exports: [
+        AdminDashboardComponent
+    ]
   
 })
 export class AdminDashboardModule { }

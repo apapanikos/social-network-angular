@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location } from '@angular/common';
  
-import { User }         from '../../../user-inteface';
-import { ApiServiceService }  from '../../../services/api-service.service';
+import { User } from '../../user-inteface';
+import { ApiServiceService }  from '../../services/api-service.service';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 

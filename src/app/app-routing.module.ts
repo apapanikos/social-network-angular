@@ -6,12 +6,25 @@ import { UserProfileComponent }      from './users/user-profile/user-profile.com
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 
+// const routes: Routes = [
+//   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+//   { path: 'dashboard', component: AdminDashboardComponent },
+//   { path: 'users', component: UsersComponent },
+//   { path: 'users/profile/:id', component: UserProfileComponent },
+//   ];
+
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  {
+    path: 'users',
+    loadChildren: './users/users.module#UsersModule'
+  },
   { path: 'dashboard', component: AdminDashboardComponent },
-  { path: 'users', component: UsersComponent },
-  { path: 'users/profile/:id', component: UserProfileComponent },
-  ];
+  {
+    path: '',
+    redirectTo: '/dashboard',
+    pathMatch: 'full'
+  }
+];
 
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],
